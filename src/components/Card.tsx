@@ -8,18 +8,26 @@ type Props = {
 export const Card = ({ name, selected, matched, onClick }: Props) => {
   return (
     <div
-      className={`transition ${matched ? 'invisible' : 'visible'} rounded ${
-        selected ? 'bg-blue-800' : 'bg-green-800'
+      className={`transition duration-[350ms] ${
+        matched
+          ? 'opacity-0 pointer-events-none'
+          : 'opacity-100 pointer-events-auto'
+      } rounded ${
+        selected ? 'bg-blue-800 -scale-x-100' : 'bg-green-800 scale-100'
       }`}
       onClick={onClick}
     >
-      <h1
-        className={`transition ${
-          selected && !matched ? 'visible' : 'invisible'
-        }`}
-      >
-        {name}
-      </h1>
+      <div className="-scale-x-100">
+        <h1
+          className={`transition ${
+            selected && !matched
+              ? 'duration-[850ms] visible'
+              : 'duration-[350ms] opacity-0'
+          }`}
+        >
+          {name}
+        </h1>
+      </div>
     </div>
   );
 };
