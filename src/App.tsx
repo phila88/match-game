@@ -29,8 +29,9 @@ type Match = {
 };
 
 function App() {
-  const [matchFound, setMatchFound] = useState(false);
-  const [matchAnimate, setMatchAnimate] = useState(false);
+  const [state, setState] = useState<
+    'pick1st' | 'pick2nd' | 'verify' | 'match'
+  >('pick1st');
   const [matches, setMatches] = useState<Card[]>([]);
   const [pair, setPair] = useState<Match>({
     a: { id: -1, name: 0 },
@@ -43,48 +44,48 @@ function App() {
       selected={pair.a.id === card.id || pair.b.id === card.id}
       matched={matches.filter((c) => c.id === card.id).length === 1}
       onClick={() => {
-        if (matchAnimate) return;
+        if (state === 'verify' || state === 'match' || card === pair.a) return;
 
         // Update pair
         const t = pair;
-        if (t.a.id === -1) t.a = card;
-        else if (t.b.id === -1) t.b = card;
-        else {
+        if (state === 'pick1st') {
           t.a = card;
-          t.b = { id: -1, name: 1 };
+          setState('pick2nd');
+        } else if (state === 'pick2nd') {
+          t.b = card;
+          setState('verify');
         }
 
         // Check match and allow animation
-        if (t.a.id !== -1 && t.b.id !== -1 && t.a.name === t.b.name) {
-          setMatchAnimate(true);
-          setTimeout(() => {
-            setMatchFound(true);
-          }, 500);
-          setTimeout(() => {
-            setMatches([...matches, t.a, t.b]);
-            setMatchAnimate(false);
-            setMatchFound(false);
-          }, 1300);
-        } else if (t.a.id !== -1 && t.b.id !== -1) {
-          setMatchAnimate(true);
-          setTimeout(() => {
-            const reset = {
-              a: { id: -1, name: 0 },
-              b: { id: -1, name: 1 },
-            };
-            setPair((pair) => ({ ...pair, ...reset }));
-            setMatchAnimate(false);
-          }, 1000);
+        if (state === 'pick2nd') {
+          if (t.a.name === t.b.name) {
+            setTimeout(() => {
+              setState('match');
+            }, 500);
+            setTimeout(() => {
+              setMatches([...matches, t.a, t.b]);
+              setState('pick1st');
+            }, 1300);
+          } else if (t.a.id !== -1 && t.b.id !== -1) {
+            setTimeout(() => {
+              const reset = {
+                a: { id: -1, name: 0 },
+                b: { id: -1, name: 1 },
+              };
+              setPair((pair) => ({ ...pair, ...reset }));
+              setState('pick1st');
+            }, 1000);
+          }
         }
         setPair((pair) => ({ ...pair, ...t }));
-        console.log('Select:', card.id, card.name);
+        console.log('Select:', card.id, card.name, state);
       }}
     />
   ));
 
   useEffect(() => {
-    console.log('pair:', pair, 'matches:', matches);
-  }, [pair, matches]);
+    console.log('state:', state, 'pair:', pair, 'matches:', matches);
+  }, [state, pair, matches]);
 
   return (
     <>
@@ -92,6 +93,7 @@ function App() {
         <div className="text-center">
           <h1>Match Game</h1>
           <h2>Total: {matches.length / 2}</h2>
+          <h2>State: {state}</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 place-content-stretch bg-green-500">
           {cards}
@@ -100,7 +102,7 @@ function App() {
 
       <div
         className={`transition duration-[350ms] ${
-          matchFound ? 'opacity-100' : 'opacity-0'
+          state === 'match' ? 'opacity-100' : 'opacity-0'
         } z-10 absolute inset-0 flex items-center justify-center select-none bg-black/10 pointer-events-none`}
       >
         <h1 className="text-5xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
