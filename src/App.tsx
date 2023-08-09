@@ -15,7 +15,7 @@ function App() {
   const cards = list.map((card) => (
     <Card
       key={card.id}
-      name={card.name}
+      src={card.src}
       selected={pair[0].id === card.id || pair[1].id === card.id}
       matched={matches.filter((c) => c.id === card.id).length === 1}
       onClick={() => selectCard(card)}
@@ -86,7 +86,7 @@ function App() {
       <div
         className={`transition duration-[350ms] ${
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
-        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/10`}
+        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/20`}
       >
         <h1 className="text-5xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           Match!!!

@@ -3,6 +3,7 @@ import { create } from 'zustand';
 export type Card = {
   id: number;
   name: number;
+  src: string;
 };
 
 type State = {
@@ -22,23 +23,23 @@ type Actions = {
 
 const initialState: State = {
   list: [
-    { id: 0, name: 1 },
-    { id: 1, name: 2 },
-    { id: 2, name: 3 },
-    { id: 3, name: 4 },
-    { id: 4, name: 5 },
-    { id: 5, name: 6 },
-    { id: 6, name: 1 },
-    { id: 7, name: 2 },
-    { id: 8, name: 3 },
-    { id: 9, name: 4 },
-    { id: 10, name: 5 },
-    { id: 11, name: 6 },
+    { id: 0, name: 1, src: 'https://picsum.photos/768/1024?random=1' },
+    { id: 1, name: 2, src: 'https://picsum.photos/768/1024?random=2' },
+    { id: 2, name: 3, src: 'https://picsum.photos/768/1024?random=3' },
+    { id: 3, name: 4, src: 'https://picsum.photos/768/1024?random=4' },
+    { id: 4, name: 5, src: 'https://picsum.photos/768/1024?random=5' },
+    { id: 5, name: 6, src: 'https://picsum.photos/768/1024?random=6' },
+    { id: 6, name: 1, src: 'https://picsum.photos/768/1024?random=1' },
+    { id: 7, name: 2, src: 'https://picsum.photos/768/1024?random=2' },
+    { id: 8, name: 3, src: 'https://picsum.photos/768/1024?random=3' },
+    { id: 9, name: 4, src: 'https://picsum.photos/768/1024?random=4' },
+    { id: 10, name: 5, src: 'https://picsum.photos/768/1024?random=5' },
+    { id: 11, name: 6, src: 'https://picsum.photos/768/1024?random=6' },
   ].sort(() => Math.random() - 0.5),
   matches: [],
   currentPair: [
-    { id: -1, name: -1 },
-    { id: -1, name: -1 },
+    { id: -1, name: -1, src: '' },
+    { id: -1, name: -1, src: '' },
   ],
   gameState: 'pick1st',
 };

@@ -1,11 +1,11 @@
 type Props = {
-  name: number;
+  src: string;
   selected: boolean;
   matched: boolean;
   onClick(): void;
 };
 
-export const Card = ({ name, selected, matched, onClick }: Props) => {
+export const Card = ({ src, selected, matched, onClick }: Props) => {
   return (
     <div className="[perspective:1920px]">
       <div
@@ -20,15 +20,15 @@ export const Card = ({ name, selected, matched, onClick }: Props) => {
       >
         {/* Back */}
         <div className="absolute h-full w-full rounded-md border-4 border-green bg-green [transform:rotateY(180deg)] sm:border-8">
-          <h1
-            className={`text-blue transition ${
-              selected && !matched
-                ? 'visible duration-[850ms]'
-                : 'opacity-0 duration-[350ms]'
-            }`}
-          >
-            {name}
-          </h1>
+          <img
+            src={src}
+            className={`h-full w-full object-cover transition
+              ${
+                selected && !matched
+                  ? 'visible duration-[850ms]'
+                  : 'opacity-0 duration-[350ms]'
+              }`}
+          />
         </div>
 
         {/* Front */}
