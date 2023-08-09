@@ -7,26 +7,34 @@ type Props = {
 
 export const Card = ({ name, selected, matched, onClick }: Props) => {
   return (
-    <div
-      className={`transition duration-[350ms] ${
-        matched
-          ? 'opacity-0 pointer-events-none'
-          : 'opacity-100 pointer-events-auto'
-      } rounded ${
-        selected ? 'bg-blue-800 -scale-x-100' : 'bg-green-800 scale-100'
-      }`}
-      onClick={onClick}
-    >
-      <div className="-scale-x-100">
-        <h1
-          className={`transition ${
-            selected && !matched
-              ? 'duration-[850ms] visible'
-              : 'duration-[350ms] opacity-0'
-          }`}
-        >
-          {name}
-        </h1>
+    <div className="[perspective:1920px]">
+      <div
+        className={`relative h-full w-full drop-shadow-lg transition duration-[350ms] [transform-style:preserve-3d] ${
+          matched
+            ? 'pointer-events-none opacity-0'
+            : 'pointer-events-auto opacity-100'
+        } rounded-md ${
+          selected || matched ? '[transform:rotateY(180deg)]' : 'transform'
+        }`}
+        onClick={onClick}
+      >
+        {/* Back */}
+        <div className="absolute h-full w-full rounded-md border-4 border-green bg-green [transform:rotateY(180deg)] sm:border-8">
+          <h1
+            className={`text-blue transition ${
+              selected && !matched
+                ? 'visible duration-[850ms]'
+                : 'opacity-0 duration-[350ms]'
+            }`}
+          >
+            {name}
+          </h1>
+        </div>
+
+        {/* Front */}
+        <div className="absolute h-full w-full transform items-center rounded-md border-4 border-green bg-green [backface-visibility:hidden] sm:border-8">
+          <div className="h-full w-full rounded-md bg-blue" />
+        </div>
       </div>
     </div>
   );

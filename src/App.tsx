@@ -71,14 +71,14 @@ function App() {
 
   return (
     <>
-      <div className="relative p-2 grid gap-1 grid-rows-[1fr_9fr] h-screen mx-auto container">
+      <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-1 p-2">
         <div className="text-center">
           <h1>Match Game</h1>
           <h2>Total: {matches.length / 2}</h2>
           <h2>State: {gameState}</h2>
           <button onClick={resetGame}>Reset</button>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 place-content-stretch bg-green-500">
+        <div className="grid grid-cols-2 place-content-stretch gap-2 md:grid-cols-4 md:gap-3">
           {cards}
         </div>
       </div>
@@ -86,7 +86,7 @@ function App() {
       <div
         className={`transition duration-[350ms] ${
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
-        } z-10 absolute inset-0 flex items-center justify-center select-none bg-black/10 pointer-events-none`}
+        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/10`}
       >
         <h1 className="text-5xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           Match!!!
