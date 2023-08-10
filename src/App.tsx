@@ -71,14 +71,20 @@ function App() {
 
   return (
     <>
-      <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-1 p-2">
-        <div className="text-center">
-          <h1>Match Game</h1>
-          <h2>Total: {matches.length / 2}</h2>
-          <h2>State: {gameState}</h2>
-          <button onClick={resetGame}>Reset</button>
+      <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-3 p-3">
+        <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
+          <h1 className="text-center text-5xl md:text-6xl">Match Game</h1>
+          {/* <h2>Total: {matches.length / 2}</h2> */}
+          {/* <h2>State: {gameState}</h2> */}
+          <button
+            disabled={matches.length === 0}
+            className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
+            onClick={resetGame}
+          >
+            Reset
+          </button>
         </div>
-        <div className="grid grid-cols-2 place-content-stretch gap-2 md:grid-cols-4 md:gap-3">
+        <div className="grid grid-cols-3 place-content-stretch gap-2 md:grid-cols-4 md:gap-4">
           {cards}
         </div>
       </div>
@@ -86,9 +92,9 @@ function App() {
       <div
         className={`transition duration-[350ms] ${
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
-        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/20`}
+        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/25`}
       >
-        <h1 className="text-5xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
+        <h1 className="text-5xl font-semibold [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] sm:text-6xl">
           Match!!!
         </h1>
       </div>

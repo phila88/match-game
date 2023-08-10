@@ -8,6 +8,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: theme(colors.yellow);
+  color: theme(colors.white);
   background-color: theme(colors.black);
 }

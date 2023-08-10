@@ -19,10 +19,10 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
         onClick={onClick}
       >
         {/* Back */}
-        <div className="absolute h-full w-full rounded-md border-4 border-green bg-green [transform:rotateY(180deg)] sm:border-8">
+        <div className="absolute h-full w-full rounded-md border-4 border-orange bg-orange [transform:rotateY(180deg)] sm:border-[6px]">
           <img
             src={src}
-            className={`h-full w-full object-cover transition
+            className={`h-full w-full rounded-md object-cover transition
               ${
                 selected && !matched
                   ? 'visible duration-[850ms]'
@@ -32,8 +32,12 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
         </div>
 
         {/* Front */}
-        <div className="absolute h-full w-full transform items-center rounded-md border-4 border-green bg-green [backface-visibility:hidden] sm:border-8">
-          <div className="h-full w-full rounded-md bg-blue" />
+        <div className="absolute h-full w-full transform items-center rounded-md border-4 border-orange bg-orange [backface-visibility:hidden] sm:border-[6px]">
+          <div className="bg-red-500 h-full w-full">
+            <div className="h-full w-full rounded-md bg-red">
+              <div className="h-full w-full bg-cloud-pattern" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
