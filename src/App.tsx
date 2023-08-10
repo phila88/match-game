@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from './components/Card';
 import { useStore, Card as CardType } from './store';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
   const gameState = useStore((state) => state.gameState);
   const updateGameState = useStore((state) => state.updateGameState);
   const resetGame = useStore((state) => state.resetGame);
@@ -70,35 +71,49 @@ function App() {
   }, [gameState, pair, matches, list]);
 
   return (
-    <>
-      <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-3 p-3">
-        <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
-          <h1 className="text-center text-5xl md:text-6xl">Match Game</h1>
-          {/* <h2>Total: {matches.length / 2}</h2> */}
-          {/* <h2>State: {gameState}</h2> */}
-          <button
-            disabled={matches.length === 0}
-            className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
-            onClick={resetGame}
-          >
-            Reset
-          </button>
+    <div className={`${darkMode && 'dark'}`}>
+      <div className="h-[100dvh] w-screen bg-white text-black transition-colors duration-[1500ms] dark:bg-black dark:text-white">
+        <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-3 p-3">
+          <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
+            <h1 className="text-center text-5xl drop-shadow-md md:text-6xl">
+              Match Game
+            </h1>
+            {/* <h2>Total: {matches.length / 2}</h2> */}
+            {/* <h2>State: {gameState}</h2> */}
+            <button
+              disabled={matches.length === 0}
+              className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
+              onClick={resetGame}
+            >
+              Reset
+            </button>
+            <button
+              className="drop-shadow-md transition hover:brightness-110"
+              onClick={() => setDarkMode((prev) => !prev)}
+            >
+              <img
+                src={
+                  darkMode ? './src/assets/sun.svg' : './src/assets/moon.svg'
+                }
+                alt={darkMode ? 'Toggle light mode' : 'Toggle dark mode'}
+              />
+            </button>
+          </div>
+          <div className="grid grid-cols-3 place-content-stretch gap-2 md:grid-cols-4 md:gap-4">
+            {cards}
+          </div>
         </div>
-        <div className="grid grid-cols-3 place-content-stretch gap-2 md:grid-cols-4 md:gap-4">
-          {cards}
+        <div
+          className={`transition duration-[350ms] ${
+            gameState === 'match' ? 'opacity-100' : 'opacity-0'
+          } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/25`}
+        >
+          <h1 className="text-5xl font-semibold text-orange transition-colors [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
+            Match!!!
+          </h1>
         </div>
       </div>
-
-      <div
-        className={`transition duration-[350ms] ${
-          gameState === 'match' ? 'opacity-100' : 'opacity-0'
-        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/25`}
-      >
-        <h1 className="text-5xl font-semibold [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] sm:text-6xl">
-          Match!!!
-        </h1>
-      </div>
-    </>
+    </div>
   );
 }
 
