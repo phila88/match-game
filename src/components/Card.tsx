@@ -22,6 +22,7 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
           {/* Back */}
           <div className="absolute h-full w-full rounded-md border-4 border-purple bg-purple transition-colors duration-[1500ms] [transform:rotateY(180deg)] dark:border-orange dark:bg-orange sm:border-[6px]">
             <img
+              alt="Random image"
               src={src}
               className={`h-full w-full rounded-md object-cover transition
                 ${
