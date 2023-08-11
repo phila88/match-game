@@ -80,24 +80,26 @@ function App() {
             </h1>
             {/* <h2>Total: {matches.length / 2}</h2> */}
             {/* <h2>State: {gameState}</h2> */}
-            <button
-              disabled={matches.length === 0}
-              className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
-              onClick={resetGame}
-            >
-              Reset
-            </button>
-            <button
-              className="drop-shadow-md transition hover:brightness-110"
-              onClick={() => setDarkMode((prev) => !prev)}
-            >
-              <img
-                src={
-                  darkMode ? './src/assets/sun.svg' : './src/assets/moon.svg'
-                }
-                alt={darkMode ? 'Toggle light mode' : 'Toggle dark mode'}
-              />
-            </button>
+            <div className="flex w-full flex-col items-center justify-between gap-3 sm:w-auto sm:flex-row">
+              <button
+                disabled={matches.length === 0}
+                className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
+                onClick={resetGame}
+              >
+                Reset
+              </button>
+              <button
+                className="flex w-full items-center justify-center drop-shadow-md transition hover:brightness-110 sm:w-auto"
+                onClick={() => setDarkMode((prev) => !prev)}
+              >
+                <img
+                  src={
+                    darkMode ? './src/assets/sun.svg' : './src/assets/moon.svg'
+                  }
+                  alt={darkMode ? 'Toggle light mode' : 'Toggle dark mode'}
+                />
+              </button>
+            </div>
           </div>
           <div className="grid min-h-[35rem] grid-cols-3 place-content-stretch gap-1 md:grid-cols-4 md:gap-3">
             {cards}
