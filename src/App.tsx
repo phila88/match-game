@@ -73,7 +73,7 @@ function App() {
   return (
     <div className={`${darkMode && 'dark'}`}>
       <div className="h-[100dvh] w-screen bg-white text-black transition-colors duration-[1500ms] dark:bg-black dark:text-white">
-        <div className="container relative mx-auto grid h-screen grid-rows-[1fr_9fr] gap-3 p-3">
+        <div className="relative mx-auto grid h-screen max-w-[75rem] grid-rows-[1fr_9fr] gap-3 p-3">
           <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
             <h1 className="text-center text-5xl drop-shadow-md md:text-6xl">
               Match Game
@@ -99,7 +99,7 @@ function App() {
               />
             </button>
           </div>
-          <div className="grid grid-cols-3 place-content-stretch gap-2 md:grid-cols-4 md:gap-4">
+          <div className="grid min-h-[35rem] grid-cols-3 place-content-stretch gap-1 md:grid-cols-4 md:gap-3">
             {cards}
           </div>
         </div>
