@@ -15,23 +15,31 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
               ? 'pointer-events-none opacity-0'
               : 'pointer-events-auto opacity-100'
           } rounded-md ${
-            selected || matched ? '[transform:rotateY(180deg)]' : 'transform'
+            selected || matched
+              ? '[transform:rotate3d(0,1,0,180deg)]'
+              : '[transform:rotate3d(0)]'
           }`}
           onClick={onClick}
         >
           {/* Back */}
-          <div className="absolute h-full w-full rounded-md border-4 border-purple bg-purple transition-colors duration-[1500ms] [transform:rotateY(180deg)] dark:border-orange dark:bg-orange sm:border-[6px]">
+          {/* Use z index transition to workaround Chrome's backface-visibility issue */}
+          <div
+            className={`absolute h-full w-full rounded-md border-4 border-purple bg-purple transition-all duration-[175ms] [transform:rotateY(180deg)] dark:border-orange dark:bg-orange sm:border-[6px] ${
+              selected || matched ? 'z-10' : 'z-0'
+            }`}
+          >
             <img
               alt="Random image"
               src={src}
               className={`h-full w-full rounded-md object-cover transition
                 ${
                   selected && !matched
-                    ? 'visible duration-[850ms]'
+                    ? 'opacity-100 duration-[850ms]'
                     : 'opacity-0 duration-[350ms]'
                 }`}
             />
           </div>
+
           {/* Front */}
           <div className="absolute h-full w-full transform items-center rounded-md border-4 border-purple bg-purple transition-colors duration-[1500ms] [backface-visibility:hidden] dark:border-orange dark:bg-orange sm:border-[6px]">
             <div className="bg-red-500 h-full w-full">
