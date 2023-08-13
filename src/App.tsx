@@ -97,7 +97,7 @@ function App() {
           <div className="flex w-full flex-col items-center justify-between gap-3 sm:w-auto sm:flex-row">
             <button
               disabled={matches.length === 0}
-              className="h-fit w-full rounded-md bg-purple p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
+              className="dark:bg-cambridgeBlue h-fit w-full rounded-md bg-blue p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
               onClick={resetGame}
             >
               Reset
@@ -123,9 +123,9 @@ function App() {
       <div
         className={`transition duration-[350ms] ${
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
-        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-black/25`}
+        } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-eggplant/25`}
       >
-        <h1 className="text-5xl font-semibold text-orange transition-colors [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
+        <h1 className="text-5xl font-semibold text-white transition-colors [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
           Match!!!
         </h1>
       </div>
