@@ -89,7 +89,7 @@ function App() {
     <>
       <div className="relative mx-auto grid h-screen max-w-[75rem] grid-rows-[1fr_9fr] gap-3 p-3">
         <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
-          <h1 className="text-center text-5xl drop-shadow-md md:text-6xl">
+          <h1 className="text-center text-5xl drop-shadow-md [font-family:Langar] md:text-6xl">
             Match Game
           </h1>
           {/* <h2>Total: {matches.length / 2}</h2> */}
@@ -97,7 +97,7 @@ function App() {
           <div className="flex w-full flex-col items-center justify-between gap-3 sm:w-auto sm:flex-row">
             <button
               disabled={matches.length === 0}
-              className="dark:bg-cambridgeBlue h-fit w-full rounded-md bg-blue p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 sm:w-48"
+              className="h-fit w-full rounded-md bg-blue p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 dark:bg-cambridgeBlue sm:w-48"
               onClick={resetGame}
             >
               Reset
@@ -125,7 +125,7 @@ function App() {
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
         } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-eggplant/25`}
       >
-        <h1 className="text-5xl font-semibold text-white transition-colors [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
+        <h1 className="text-5xl font-medium text-white transition-colors [font-family:Langar] [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
           Match!!!
         </h1>
       </div>
