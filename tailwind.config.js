@@ -12,6 +12,7 @@ export default {
         blue: '#4F517D',
         white: '#FCD0A1',
         cambridgeBlue: '#81B29A',
+        pink: '#F9CFF2',
       },
     },
   },

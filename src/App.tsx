@@ -125,7 +125,7 @@ function App() {
           gameState === 'match' ? 'opacity-100' : 'opacity-0'
         } pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center bg-eggplant/25`}
       >
-        <h1 className="text-5xl font-medium text-white transition-colors [font-family:Langar] [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
+        <h1 className="text-5xl font-medium text-pink transition-colors [font-family:Langar] [text-shadow:_4px_4px_4px_rgb(0_0_0_/_75%)] dark:text-white sm:text-6xl">
           Match!!!
         </h1>
       </div>

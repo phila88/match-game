@@ -24,7 +24,7 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
           {/* Back */}
           {/* Use z index transition to workaround Chrome's backface-visibility issue */}
           <div
-            className={`dark:border-cambridgeBlue dark:bg-cambridgeBlue absolute h-full w-full rounded-md border-4 border-blue bg-blue transition-all duration-[175ms] [transform:rotateY(180deg)] sm:border-[6px] ${
+            className={`absolute h-full w-full rounded-md border-4 border-cambridgeBlue bg-cambridgeBlue transition-all duration-[175ms] [transform:rotateY(180deg)] dark:border-blue dark:bg-blue sm:border-[6px] ${
               selected || matched ? 'z-10' : 'z-0'
             }`}
           >
@@ -41,9 +41,9 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
           </div>
 
           {/* Front */}
-          <div className="dark:border-cambridgeBlue dark:bg-cambridgeBlue absolute h-full w-full transform items-center rounded-md border-4 border-blue bg-blue transition-colors duration-[1500ms] [backface-visibility:hidden] sm:border-[6px]">
+          <div className="absolute h-full w-full transform items-center rounded-md border-4 border-cambridgeBlue bg-cambridgeBlue transition-colors duration-[1500ms] [backface-visibility:hidden] dark:border-blue dark:bg-blue sm:border-[6px]">
             <div className="h-full w-full">
-              <div className="bg-cambridgeBlue h-full w-full rounded-md transition-colors duration-[1500ms] dark:bg-blue">
+              <div className="h-full w-full rounded-md bg-cambridgeBlue transition-colors duration-[1500ms] dark:bg-blue">
                 <div className="h-full w-full rounded-md bg-cloud-pattern" />
               </div>
             </div>
