@@ -40,13 +40,16 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
             />
           </div>
 
+          {/* Card depth outline */}
+          <div
+            className={`absolute top-[1px] h-full w-full rounded-md bg-gray-200 transition duration-[350ms] dark:bg-gray-500 ${
+              selected || matched ? 'right-[1px]' : 'left-[1px]'
+            }`}
+          />
+
           {/* Front */}
-          <div className="absolute h-full w-full transform items-center rounded-md border-4 border-cambridgeBlue bg-cambridgeBlue transition-colors duration-[1500ms] [backface-visibility:hidden] dark:border-blue dark:bg-blue sm:border-[6px]">
-            <div className="h-full w-full">
-              <div className="h-full w-full rounded-md bg-cambridgeBlue transition-colors duration-[1500ms] dark:bg-blue">
-                <div className="h-full w-full rounded-md bg-cloud-pattern" />
-              </div>
-            </div>
+          <div className="absolute h-full w-full transform rounded-md border-4 border-cambridgeBlue bg-cambridgeBlue transition-colors duration-1000 [backface-visibility:hidden] dark:border-blue dark:bg-blue sm:border-[6px]">
+            <div className="h-full w-full rounded-md bg-cloud-pattern" />
           </div>
         </div>
       </div>

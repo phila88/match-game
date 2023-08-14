@@ -10,7 +10,7 @@ export default {
       colors: {
         eggplant: '#5E4B56',
         blue: '#4F517D',
-        white: '#FCD0A1',
+        lightOrange: '#FCD0A1',
         cambridgeBlue: '#81B29A',
         pink: '#F9CFF2',
       },
