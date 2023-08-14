@@ -97,7 +97,7 @@ function App() {
           <div className="flex w-full flex-col items-center justify-between gap-3 sm:w-auto sm:flex-row">
             <button
               disabled={matches.length === 0}
-              className="h-fit w-full rounded-md bg-blue p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-1000 hover:brightness-110 active:brightness-90 disabled:opacity-75 disabled:hover:brightness-100 dark:bg-cambridgeBlue sm:w-48"
+              className="h-fit w-full rounded-md bg-blue p-2 font-semibold text-[#FFF] drop-shadow-md transition duration-300 hover:brightness-110 active:brightness-90 active:drop-shadow-none disabled:opacity-50 disabled:hover:brightness-100 dark:bg-cambridgeBlue sm:w-48"
               onClick={resetGame}
             >
               Reset
