@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Card } from './components/Card';
 import { useStore, Card as CardType } from './store';
+import sunUrl from './assets/sun.svg';
+import moonUrl from './assets/moon.svg';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -107,9 +109,9 @@ function App() {
               onClick={() => setDarkMode((prev) => !prev)}
             >
               <img
-                src={
-                  darkMode ? './src/assets/sun.svg' : './src/assets/moon.svg'
-                }
+                width={24}
+                height={24}
+                src={darkMode ? sunUrl : moonUrl}
                 alt={darkMode ? 'Toggle light mode' : 'Toggle dark mode'}
               />
             </button>
