@@ -5,7 +5,7 @@ type Props = {
   onClick(): void;
 };
 
-export const Card = ({ src, selected, matched, onClick }: Props) => {
+const Card = ({ src, selected, matched, onClick }: Props) => {
   return (
     <div className="flex items-center justify-center p-1">
       <div className="h-full max-h-full w-full max-w-full [perspective:1920px] md:aspect-[5/7] md:w-auto">
@@ -58,3 +58,5 @@ export const Card = ({ src, selected, matched, onClick }: Props) => {
     </div>
   );
 };
+
+export default Card;
