@@ -58,7 +58,6 @@ function App() {
         }, 1000);
       }
     }
-    console.log('Select:', card.id, card.name, gameState);
   };
 
   useEffect(() => {
@@ -75,19 +74,6 @@ function App() {
       document.body.classList.add('transition-colors', 'duration-1000');
     }, 100);
   }, []);
-
-  useEffect(() => {
-    console.log(
-      'gameState:',
-      gameState,
-      'pair:',
-      pair,
-      'matches:',
-      matches,
-      'list:',
-      list,
-    );
-  }, [gameState, pair, matches, list]);
 
   return (
     <>
