@@ -17,6 +17,7 @@ function App() {
   const cards = list.map((card) => (
     <Card
       key={card.id}
+      name={card.name}
       src={card.src}
       selected={pair[0].id === card.id || pair[1].id === card.id}
       matched={matches.filter((c) => c.id === card.id).length === 1}

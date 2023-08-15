@@ -1,11 +1,12 @@
 type Props = {
+  name: number;
   src: string;
   selected: boolean;
   matched: boolean;
   onClick(): void;
 };
 
-const Card = ({ src, selected, matched, onClick }: Props) => {
+const Card = ({ name, src, selected, matched, onClick }: Props) => {
   return (
     <div className="flex items-center justify-center p-1">
       <div className="h-full max-h-full w-full max-w-full [perspective:1920px] md:aspect-[5/7] md:w-auto">
@@ -25,12 +26,12 @@ const Card = ({ src, selected, matched, onClick }: Props) => {
             {/* Back */}
             {/* Use z index transition to workaround Chrome's backface-visibility issue */}
             <div
-              className={`absolute h-full w-full rounded-md border-4 border-cambridgeBlue bg-cambridgeBlue transition-all duration-[175ms] [transform:rotateY(180deg)] dark:border-blue dark:bg-blue sm:border-[6px] ${
+              className={`absolute h-full w-full rounded-md border-4 border-gray-200 bg-gray-200 transition-all duration-[175ms] [transform:rotateY(180deg)] dark:border-gray-500 dark:bg-gray-500 sm:border-[6px] ${
                 selected || matched ? 'z-10' : 'z-0'
               }`}
             >
               <img
-                alt="Random image"
+                alt={`Random image ${name}`}
                 src={src}
                 loading="lazy"
                 className={`h-full w-full rounded-md object-cover transition
