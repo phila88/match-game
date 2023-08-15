@@ -47,6 +47,8 @@ function App() {
           setMatches(pair[0], card);
           resetPair();
           updateGameState('pick1st');
+          if (matches.length === 10)
+            setTimeout(() => updateGameState('pendingNewGame'), 350);
         }, 1300);
       } else if (pair[0].id !== -1 && card.id !== -1) {
         setTimeout(() => {
@@ -97,9 +99,18 @@ function App() {
         />
 
         {/* Game grid */}
-        <div className="grid min-h-[35rem] grid-cols-3 place-content-stretch gap-1 md:grid-cols-4 md:gap-3">
-          {cards}
-        </div>
+        {gameState !== 'pendingNewGame' ? (
+          <div className="grid min-h-[35rem] grid-cols-3 place-content-stretch gap-1 md:grid-cols-4 md:gap-3">
+            {cards}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-3.5 font-[Langar] text-2xl">
+            <h2 className="drop-shadow-md">Congrats! All matches found.</h2>
+            <h2 className="drop-shadow-md">
+              Click on the reset button to start a new game.
+            </h2>
+          </div>
+        )}
       </div>
 
       <div

@@ -10,12 +10,14 @@ type State = {
   list: Card[];
   matches: Card[];
   currentPair: Card[];
-  gameState: 'pick1st' | 'pick2nd' | 'verify' | 'match';
+  gameState: 'pick1st' | 'pick2nd' | 'verify' | 'match' | 'pendingNewGame';
 };
 
 type Actions = {
   matchFound: (a: Card, b: Card) => void;
-  updateGameState: (s: 'pick1st' | 'pick2nd' | 'verify' | 'match') => void;
+  updateGameState: (
+    s: 'pick1st' | 'pick2nd' | 'verify' | 'match' | 'pendingNewGame',
+  ) => void;
   updatePair: (a: Card) => void;
   resetPair: () => void;
   resetGame: () => void;
