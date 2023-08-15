@@ -32,6 +32,7 @@ const Card = ({ src, selected, matched, onClick }: Props) => {
               <img
                 alt="Random image"
                 src={src}
+                loading="lazy"
                 className={`h-full w-full rounded-md object-cover transition
                   ${
                     selected && !matched

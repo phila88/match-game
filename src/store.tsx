@@ -56,8 +56,14 @@ export const useStore = create<State & Actions>()((set) => ({
       return { currentPair: t };
     }),
   resetPair: () => set({ currentPair: initialState.currentPair }),
-  resetGame: () => {
-    const t = [...initialState.list];
+  resetGame: async () => {
+    // Use a set of random images from picsum.photos
+    const i = Math.floor(Math.random() * 12);
+    const t = initialState.list.map((item) => {
+      item.src = `https://picsum.photos/768/1024.webp?random=${i + item.name}`;
+      return item;
+    });
+
     t.sort(() => Math.random() - 0.5);
     set({
       list: t,
