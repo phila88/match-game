@@ -10,3 +10,11 @@ Built with:
 - Vite
 
 [Live demo](https://match-game.onrender.com/)
+
+To run locally:
+```
+# Install
+pnpm install
+# Start dev server
+pnpm dev
+```
